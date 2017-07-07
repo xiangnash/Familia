@@ -34,6 +34,7 @@ all: familia
 	@echo $(SOURCES)
 	@echo $(OBJS)
 	$(CXX) $(CXXFLAGS) $(INCPATH) build/demo/inference_demo.o  $(LDFLAGS_SO) -o inference_demo
+	$(CXX) $(CXXFLAGS) $(INCPATH) build/demo/batch_inference_demo.o  $(LDFLAGS_SO) -o batch_inference_demo
 	$(CXX) $(CXXFLAGS) $(INCPATH) build/demo/doc_distance_demo.o $(LDFLAGS_SO)  -o doc_distance_demo
 	$(CXX) $(CXXFLAGS) $(INCPATH) build/demo/query_doc_sim_demo.o $(LDFLAGS_SO)  -o query_doc_sim_demo
 	$(CXX) $(CXXFLAGS) $(INCPATH) build/demo/word_distance_demo.o $(LDFLAGS_SO) -o word_distance_demo
@@ -45,6 +46,7 @@ include depends.mk
 .PHONY: clean
 clean:
 	rm -rf inference_demo
+	rm -rf batch_inference_demo
 	rm -rf doc_distance_demo
 	rm -rf query_doc_sim_demo
 	rm -rf word_distance_demo
@@ -61,6 +63,7 @@ familia: build/libfamilia.a
 
 OBJS = $(addprefix build/, vose_alias.o inference_engine.o model.o vocab.o document.o sampler.o config.o util.o semantic_matching.o tokenizer.o \
 		                   demo/inference_demo.o \
+		           demo/batch_inference_demo.o \
 						   demo/doc_distance_demo.o \
 						   demo/query_doc_sim_demo.o \
 						   demo/word_distance_demo.o \
